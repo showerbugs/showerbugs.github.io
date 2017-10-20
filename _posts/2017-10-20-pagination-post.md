@@ -1,0 +1,193 @@
+---
+layout: post
+title: "ES6 사용시 주의할 점"
+author: "hou"
+---
+
+# Arrow function
+es6에서 arrow function은 bind나 클로저 변수로 this를 할당하지 않고도 해당 function에 현재 context(this)를 반영해준다.
+
+```js
+//es5
+function sayhou() {
+    this.foo =  1; 
+    $(document.body).on('click', function () {   
+        console.log(this.foo);
+    }.bind(this));
+}
+
+//es6
+function sayhou() {
+    this.foo =  1 
+    $(document.body).on('click',  () => {   
+        console.log(this.foo)
+    })
+}
+```
+### 다만 Arrow function은 object literal에서는 가급적 사용하지말자 
+```js
+let obj = {
+    bar: 1,
+    getBar: () => {
+        console.log(this.bar)
+    }
+}
+obj.getBar()
+
+```
+위와 코드를 실행시키면 this.bar의 값은 무엇이 나올까? 답은 ``undefined``이다. getBar의 context는 obj가 아니라 현재 함수의 context인 (여기서는 window객체)이기 때문이다. 자동으로 bind(this)가 된것이니 당연한이야기다.
+
+그래서 기존대로 object의 context를 가져가고 싶으면 아래와 같은 함수축약 문법을 쓰길 권한다.
+
+```js
+let obj = {
+    bar: 1,
+    getBar () {
+        console.log(this.bar)
+    }
+}
+obj.getBar()
+
+```
+
+## Default Paramter 
+
+es6에 드디어 추가된 default parameter는 말 그대로 파라미터의 초기값을 지정해주는 것이다.
+
+```js
+function sum(a, b=3) {
+    return a + b
+}
+sum(3,4) //7
+sum(3) //6
+```
+
+### 초기값으로 object나 array를 넣어도 괜찮을까?
+
+파이썬에서 default paramter로는 기본 자료형만 넣어야한다. object나 array를 넣는 것은 전형적인 안티패턴으로 값이 각각의 컨텍스트마다 공유가 되기 때문이다. 
+
+다행히 자바스크립트는 그런것이 없다. 자바스크립트는 함수 콜마다 파라미터를 초기화하기 때문에 서로 공유하지 않는다. 그래서 마음놓고 object로 초기화를 해도 된다.
+
+```js
+function sayhou(a, b =[]) {
+    b.push(a)
+    console.log(b)
+}
+sayhou(3) //[3]
+fn(4) //[4]
+sayhou
+```
+아래와 같은 destructing 구조들도 가능하다. 다만 변수가 destructing하는 묶음단위로 값이 할당이 되는 점은 주의해서 써야한다.
+
+``` js
+function sayhou(a, {b,c} = {2,5}) {
+    console.log(a, b, c)
+}
+
+sayhou(1) // 2,2,5
+sayhou(2, {b:3, c:4}) // 2,3,4
+sayhou(2, {b:6}) //2, 6, undefined  
+```
+## object에서 default parmeter 사용 할때는 트릭을 이용하자 
+
+그렇다면 위의 예제에서 b만 있는 object를 넣었을 때 c가 undefined가 아닌 default value로 초기화하려면 어떻게 해야할까
+object안의 변수들을 아래와 같이 선언과 초기화를 같이 하는 경우는 컴파일 에러다.
+```js
+function sayhou(a, {b=3, c=4}){
+    console.log(a, b)
+}
+sayhou(); //Cannot match against 'undefined' or 'null'
+```
+
+이럴경우 한가지 트릭이 있다. 이렇게 object가 없을경우 빈 object를 할당하도록 해놓으면은 빈배열로 일단 초기화가 되어 compile에러를 방지하고 각 prop별로 값을 할당 할 수있다.
+
+```js
+function sayhou ({
+  a = 3,
+  b = 4
+} = {}) {
+ console.log(a + ' ' + b)
+}
+
+sayhou() // 3,4
+sayhou({a:4}) //4,4
+sayhou({a:2, b:3}) //2,3
+```
+
+
+### evaluation은 순차적이다.
+
+default parameter에도 함수나 변수를 쓸 수가 있다. 
+```js
+function echo() {
+    return 'echo'
+}
+function fn(a, b = echo()){
+    console.log(a, b)
+}
+fn(3) // 3 "echo"
+```
+
+또한 파라미터를 쓸 수도 있다.
+```js
+function echo(val) {
+
+
+
+    return `echo${val}` 
+}
+function sayhou(a, b = echo(a)){
+    console.log(a, b)
+}
+fn(3) //3 "echo3"
+```
+
+하지만 주의해야 할 것은 해당 값들을 쓸 수 있는 시점은 함수가 실행되기전 컨택스트 기준이다. 
+만약 아래와 같이 a와 b의 파라미터 순서가 바뀐다면 
+
+```js
+function sayhou(b = echo(a), a){
+    console.log(a, b)
+}
+```
+fn()과 같이 파라미터가 없으면 echo(a)를 실행하게되고 a라는 변수는 아직 컨텍스트에 할당이 되기 전 시점이라 a is not defined이라는 에러를 뱉을 것이다. 
+
+그래서 다른 파라미터의 값을 쓰고자 한다면 반드시 앞에서 이미 선언된 파라미터 뒤에 와야한다.
+
+
+아래 예제를 보자. c의 값은 최종적으로 4이다 하지만 default paramter를 evaluation할때의 값은 7이다 결과적으로 b=7이 된다.
+```js
+function sayhou(b = this.c) {
+	this.c = 4
+    console.log(b, c)
+}
+sayhou.call({c:7}) // 7, 4
+```
+
+
+# Destructuring
+개인적으로 es6의 가장 좋은 기능이라 생각하는 destructiuring이다.
+기본적인 설명은 생략하고 변수를 받을 때 받지 않으려면 그냥 비워 놓으면 된다.
+
+```javascript
+let [,a,,b] = [1,2,3,4] // a:2 b:4
+```
+
+하지만 해당 index에 값이 없다면? undefined로 값이 떨어진다. 그럴땐 마찬가지로 default value를 설정할 수 있다.
+
+```javascript
+let [,a=3,,b=5] = [1,2] //a:2 b:5
+```
+
+이번엔 배열이 아예 없으면 어떨까? 
+undefined엔 순회하고자하는 iterator가 없기 때문에 다음과 같은 에러를 내뱉는다.
+
+```
+Uncaught TypeError: Cannot read property 'Symbol(Symbol.iterator)' of null 
+```
+
+그래서 마찬가지로 할당하는 쪽에도 default값을 설정해주자.
+
+```javascript
+let [,a=3,,b=5] = arrOrNull || []
+```

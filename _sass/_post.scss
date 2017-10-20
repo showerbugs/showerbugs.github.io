@@ -5,10 +5,19 @@
     color: $default-tint;
     font-family: $palatino;
     letter-spacing: .5px;
-    text-align: center;
+    text-align: right;
+    margin-top: 2rem;
 
     span {
       font-style: italic;
+    }
+
+    .catalogue-author {
+      justify-content: flex-end;
+
+      &-profile {
+        margin-left: .5rem;
+      }
     }
   }
 

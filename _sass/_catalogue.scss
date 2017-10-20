@@ -21,6 +21,11 @@
     letter-spacing: .5px;
   }
 
+  &-info {
+    display: flex;
+    align-items: center;
+  }
+
   &-title {
     color: $default-shade;
     display: block;
@@ -30,10 +35,29 @@
     margin: .5rem 0;
   }
 
+  &-link {
+    color: $default-color;
+    padding: 2rem 0;
+  }
+
   &-line {
     @include transition(all .3s ease-out);
     border-top: .2rem solid $default-shade;
     display: block;
     width: 2rem;
+  }
+
+  &-author {
+    color: $default-tint;
+    font-family: $palatino;
+    margin-left: .5rem;
+    display: flex;
+    align-items: center;
+
+    &-profile {
+      border-radius: 50%;
+      display: inline-block;
+      margin: 0 .5rem 0 0;
+    }
   }
 }
