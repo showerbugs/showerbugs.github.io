@@ -35,6 +35,15 @@ authors:
     email: waitingforqodot@gmail.com
     github: qodot
     url: https://qodot.github.io
+  aiden:
+    name: Dae-Yoon Kim
+    nickname: Aiden
+    image: assets/images/kdaeyoon88.png
+    bio: Android 개발자입니다;
+    location: Suwon, Korea
+    email: kdaeyoon88@gmail.com
+    github: kdaeyoon88
+    url: https://kdaeyoon88.github.io
 
 # Custom vars
 version:        3.4.1
