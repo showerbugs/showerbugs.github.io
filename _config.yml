@@ -44,3 +44,6 @@ github:
 # Gems
 gems:
   - jekyll-paginate
+
+google_analytics: UA-99504405-1
+disqus: showerbugs
