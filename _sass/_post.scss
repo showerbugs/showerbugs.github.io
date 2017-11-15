@@ -50,3 +50,50 @@
     text-decoration: underline;
   }
 }
+
+.about {
+  $left-box-width: 230px;
+
+  &-author {
+      padding: 20px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+  
+      &-profile {
+          border-radius: 100px;
+          margin: 0;
+      }
+
+      &-left-box {
+        width: $left-box-width;
+        flex: none;
+      }
+
+      &-right-box {
+        border-left: 1px solid #ccc;
+        height: 100%;
+        padding: 20px;
+      }
+
+      &-nickname {
+        color: #333;
+        margin-bottom: 10px;
+      }
+
+      &-name {
+        color: #999;
+      }
+
+      &-bar {
+        width: 100%;
+        height: 1px;
+        background: #ccc;
+        margin-bottom: 10px;
+      }
+      
+      &-email {
+        color: #999;
+      }
+  }
+} 
