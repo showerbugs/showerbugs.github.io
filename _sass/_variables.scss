@@ -26,3 +26,18 @@ $code-color: #bf616a;
      -moz-transition: $args;
           transition: $args;
 }
+
+.tag {
+  display: inline-block;
+  background: #fff;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #F56161;
+  border: 1px solid #ef8080;
+  height: 19px;
+  line-height: 17px;
+  padding: 0 10px;
+  font-size: 15px;
+  letter-spacing: 0;
+  font-family: 나눔고딕;
+}

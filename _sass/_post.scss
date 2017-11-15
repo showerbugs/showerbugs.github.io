@@ -32,8 +32,13 @@
   &-line {
     border-top: .4rem solid $default-shade;
     display: block;
-    margin: 0 auto 3rem;
+    margin: 0 auto 2rem;
     width: 4rem;
+  }
+
+  &-tags {
+    margin: 0 auto 2rem;
+    text-align: right;
   }
 
   p {

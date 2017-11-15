@@ -7,6 +7,12 @@ layout: default
   <h1 class="post-title">{{ page.title }}</h1>
   <div class="post-line"></div>
 
+  <div class="post-tags">
+    {% for tag in page.tags %}
+      <a href="{{ '/tag' | prepend: site.baseurl }}/{{ tag }}"><span class="tag">{{tag}}</span></a>
+    {% endfor %}  
+    </div>   
+
   {{ content }}
 
   <div class="post-info">
