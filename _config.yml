@@ -20,12 +20,12 @@ authors:
   hou:
     name: Min-Ho Choi
     nickname: hou
-    image: 'assets/images/minho.jpg'
-    bio: 'Front 개발자 입니다.'
+    image: assets/images/minho.jpg
+    bio: 풀스택을 지향하는 프론트 개발자 입니다.
     location: Suwon, Korea
     email: vnthf1@naver.com
     github: Vnthf
-    url: https://vnthf.logdown.com
+    url: http://vnthf.logdown.com
   qodot:
     name: Dae-Won Seo
     nickname: qodot
@@ -38,8 +38,8 @@ authors:
   aiden:
     name: Dae-Yoon Kim
     nickname: Aiden
-    image: assets/images/kdaeyoon88.png
-    bio: Android 개발자입니다;
+    image: assets/images/kdaeyoon88.jpg
+    bio: Android 개발자입니다.
     location: Suwon, Korea
     email: kdaeyoon88@gmail.com
     github: kdaeyoon88
