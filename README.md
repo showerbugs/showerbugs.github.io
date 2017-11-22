@@ -18,7 +18,7 @@ Fork this repository then clone it.
 Tale uses Jekyll's built-SCSS compiler to generate CSS. You'll need to install the Jekyll gem:
 
 ```bash
-$ gem install jekyll
+$ gem install jekyll jekyll-paginate
 ```
 
 ### 3. Create your site
