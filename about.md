@@ -4,7 +4,7 @@ title: "post"
 permalink: /about/
 ---
 
-# Showerbugs는? 
+# Showerbugs
 * IT 기술을 공부하고 기술 서적을 읽고 정리하고, 작은 프로젝트를 만들고 있는 모임입니다.
 * python, javascript, go, android 등 언어와 플랫폼에 제한을 두지 않고 다양한 분야를 공부하려 합니다.
 * 끊임없이 공부하는 개발자가 되려 하고 있습니다.
