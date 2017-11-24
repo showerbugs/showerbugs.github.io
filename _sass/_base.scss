@@ -63,3 +63,14 @@ img {
 td {
   vertical-align: top;
 }
+
+table {
+  border-collapse: collapse;
+  margin: 5px 0;
+}
+
+td, 
+th {
+  border: 1px solid #ddd;
+  padding: 5px;
+}
