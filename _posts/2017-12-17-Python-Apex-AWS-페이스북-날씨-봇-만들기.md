@@ -27,15 +27,15 @@ tags: python apex aws lambda apigateway facebookbot
 
 우선 [페이스북 개발자 페이지](https://developers.facebook.com/)에서 애플리케이션을 생성해야 한다.
 
-![fb-new-app](apex-aws-facebookbot/fb-new-app.png)
+![fb-new-app](https://wiki.qodot.me/py/apex-aws-facebookbot/fb-new-app.png)
 
 메신저 플랫폼을 선택하고,
 
-![fb-new-messanger](apex-aws-facebookbot/fb-new-messanger.png)
+![fb-new-messanger](https://wiki.qodot.me/py/apex-aws-facebookbot/fb-new-messanger.png)
 
 페이스북 페이지를 새로 생성해서 엑세스 토큰을 발급 받는다.
 
-![fb-new-page-token](apex-aws-facebookbot/fb-new-page-token.png)
+![fb-new-page-token](https://wiki.qodot.me/py/apex-aws-facebookbot/fb-new-page-token.png)
 
 # 페이스북 웹훅 등록
 
@@ -119,7 +119,7 @@ def handle(event, context):
 
 페이스북 메신저 플랫폼에 웹훅 서버를 등록하는 방법은 다음과 같다.
 
-![fb-webhook](apex-aws-facebookbot/fb-webhook.png)
+![fb-webhook](https://wiki.qodot.me/py/apex-aws-facebookbot/fb-webhook.png)
 
 즉, 여기에 입력한  URL에서 입력한 토큰을 처리해주면 인증이 되는 구조다. (해당 URL의 `GET` 메서드로 인증을 받고 나면 `POST` 메서드로 메세지가 들어오게 된다) 그리고 우리가 만든 웹훅용 람다 함수가 인터넷에서 호출이 가능하려면 API Gateway를 람다의 트리거로 등록해야 한다.
 
@@ -127,15 +127,15 @@ def handle(event, context):
 
 AWS API Gateway 콘솔로 들어가서 'API 작성' 버튼을 누른다. '새 API'를 선택하고 API 이름을 입력한다.
 
-![new-api-gateway](apex-aws-facebookbot/new-api-gateway.png)
+![new-api-gateway](https://wiki.qodot.me/py/apex-aws-facebookbot/new-api-gateway.png)
 
 리소스 -> 작업 -> 메서드 생성을 선택하고 `GET` 메서드를 생성한다. '통합 유형'에서 'Lambda 함수'를 선택하고 'Lambda 리전'을 아까 배포한 람다 함수가 있는 지역으로 선택한다. 람다 함수의 이름까지 입력하고 저장을 누른다.
 
-![new-method](apex-aws-facebookbot/new-method.png)
+![new-method](https://wiki.qodot.me/py/apex-aws-facebookbot/new-method.png)
 
 생성된 `GET` 메서드를 클릭하면 아래와 같은 그림을 볼 수 있을텐데,
 
-![api-gateway-flow](apex-aws-facebookbot/api-gateway-flow.png)
+![api-gateway-flow](https://wiki.qodot.me/py/apex-aws-facebookbot/api-gateway-flow.png)
 
 통합 요청 -> 본문 매핑 템플릿을 선택하면 '요청 본문 패스쓰루'를 설정할 수 있는데, 여기서 '정의된 템플릿이 없는 경우'를 선택하고 아래 매핑 템플릿 추가를 눌러 `application/json`을 입력해준다.
 
