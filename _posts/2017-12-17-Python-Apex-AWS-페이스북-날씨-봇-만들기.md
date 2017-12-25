@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Apex, AWS로 Facebook Bot 개발 (1)"
+title: "Apex, AWS로 Facebook 날씨 봇 개발 (1)"
 author: "qodot"
 tags: python apex aws lambda apigateway facebookbot
 ---
