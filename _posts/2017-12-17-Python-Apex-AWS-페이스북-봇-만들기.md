@@ -1,4 +1,9 @@
-# Apex, AWS로 Facebook Bot 개발 (1)
+---
+layout: post
+title: "Apex, AWS로 Facebook Bot 개발 (1)"
+author: "qodot"
+tags: python apex aws lambda apigateway
+---
 
 서버리스를 향한 관심이 점점 높아지고 있는 가운데, 나도 이걸로 무언가 만들어보고 싶다는 생각을 종종 하곤 했다. 그러다가, 최근에 매일 아침 출근을 준비하면서 네이버에서 날씨 영상 뉴스를 검색하고 틀어놓는데, 이 부분을 서버리스 기술을 이용해서 간단하게 자동화하면 좋겠다는 생각이 들었다.
 
