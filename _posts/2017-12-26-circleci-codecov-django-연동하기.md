@@ -21,5 +21,5 @@ tags: python ci django test
 
 먼저, circleci에 접속해 로그인합니다.
 
-![]
+![{{site.url}}/images/2017-12-26/1_circleci.png]({{site.url}}/images/2017-12-26/1_circleci.png)
   
