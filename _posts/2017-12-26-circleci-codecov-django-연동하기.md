@@ -74,7 +74,7 @@ CircleCI에서 제공하는 Sample `config.yml` 파일을 그대로 사용하지
 
 - functional test에서 selenium을 사용하고 있는데 이를 제외하기 위함입니다. selenium 테스트는 해당 포스트에서 다루지 않기 때문에 제외합니다.
 - `python manage.py test accounts lists`
-
+{% raw %}
 ```yml
 # Python CircleCI 2.0 configuration file
 #
@@ -128,7 +128,7 @@ jobs:
           path: test-reports
           destination: test-reports
 ```
-
+{% endraw %}
 저장하고 `.circleci` 를 추가하고 push합니다.
 
 ```sh
@@ -208,7 +208,7 @@ fork한 자신의 계정을 클릭합니다.
 - `pip install coverage codecov` 추가
 - `python manage.py test accounts lists`를 `coverage run ./manage.py test accounts lists`로 변경
 - coverage 이후 `codecov` 추가
-
+{% raw %}
 ```yml
 # Python CircleCI 2.0 configuration file
 #
@@ -264,7 +264,7 @@ jobs:
           path: test-reports
           destination: test-reports
 ```
-
+{% endraw %}
 `config.yml`을 수정한 이후 push하면 CircleCI에서 Coverage를 분석한 이후에 Codecov로 정보를 전송하는 것을 볼 수 있습니다.
 
 ![6_codecov]({{site.url}}/images/2017-12-26/6_codecov.png)
