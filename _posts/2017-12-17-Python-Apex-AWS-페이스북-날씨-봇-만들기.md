@@ -3,6 +3,7 @@ layout: post
 title: "Apex, AWS로 Facebook 날씨 봇 개발 (1)"
 author: "qodot"
 tags: python apex aws lambda apigateway facebookbot
+categories: python aws
 ---
 
 서버리스를 향한 관심이 점점 높아지고 있는 가운데, 나도 이걸로 무언가 만들어보고 싶다는 생각을 종종 하곤 했다. 그러다가 출근 준비할 때마다 하는 날씨 검색을 페이스북 봇을 이용해서 자동화할 수 있겠다는 생각, 그 작업을 서버리스 기술을 이용해서 할 수 있겠다는 생각이 들었다.

@@ -2,7 +2,7 @@
 layout: post
 title: "django 프로젝트에 CircleCI와 CodeCov 연동하기"
 author: "amazingguni"
-tags: python ci django test
+tags: python ci
 ---
 
 우리 프로젝트가 팀이 기대하는 수준의 품질이 보장된다는 것을 확인해주는 안전장치(어떤 책에서는 심장 박동이라고 하더라)가 있다면, 우리는 좀 더 자신감을 가지고 개발을 할 수 있을 겁니다. 우리가 잘못된 길을 갈 때마다 우리에게 그 길이 아닌 다른 길을 가야한다고 알려줄거라는 믿음이 있기 때문이죠. 그래서 Repository를 처음 셋업할 때에 Continuous Integration(줄여서 CI) 체계를 갖추는 것은 그 어떤 일보다 중요합니다.

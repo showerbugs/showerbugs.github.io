@@ -9,9 +9,9 @@ layout: default
 
   <div class="post-tags">
     {% for tag in page.tags %}
-      <a href="{{ '/tag' | prepend: site.baseurl }}/{{ tag }}"><span class="tag">{{tag}}</span></a>
-    {% endfor %}  
-    </div>   
+     <span class="tag">{{tag}}</span>
+    {% endfor %}
+    </div>
 
   {{ content }}
 
@@ -26,6 +26,13 @@ layout: default
         <br>
         <span>on&nbsp;</span><time datetime="{{ page.date }}">{{ page.date | date: "%B %d, %Y" }}</time>
       {% endif %}
+    </div>
+
+    <div class="post-categories">
+        관련 문서 더보기
+        {% for category in page.categories %}
+        <a href="{{ '/category' | prepend: site.baseurl }}/{{ category }}"><span class="category">{{category}}</span></a>
+        {% endfor %}
     </div>
 
 </div>
