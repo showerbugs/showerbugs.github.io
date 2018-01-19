@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "post"
+title: "about"
 permalink: /about/
 ---
 
@@ -21,15 +21,17 @@ permalink: /about/
             <img class="about-author-profile" src="/{{author[1].image}}" width="200px" height="200px"/>
         </div>
         <div class="about-author-right-box">
-            <h1 class="about-author-nickname">{{author[1].nickname}}
-              <span class="about-author-name">{{author[1].name}} </span>
+            <h1 class="about-author-nickname">
+              {{author[1].nickname}}<span class="about-author-name">{{author[1].name}} </span>
               </h1>
             <div class="about-author-bar"></div>
-            <div>{{author[1].bio}}</div>
-            <span class="about-author-email">{{author[1].email}}</span>
-        <div><a class="about-author-blog-link" href="{{author[1].url}}" target="_blank">
-            Blog
-         </a></div>
+            <div><i class="material-icons md-24">face</i>{{author[1].bio}}</div>
+            <i class="material-icons md-24">mail</i><span class="about-author-email">{{author[1].email}}</span>
+        <div>
+            <a class="about-author-blog-link" href="{{author[1].url}}" target="_blank">
+                <i class="material-icons md-24">home</i><label>Blog</label>
+            </a>
+         </div>
         </div>
     </div>
     {% endfor %}  
