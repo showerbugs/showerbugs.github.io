@@ -1,0 +1,45 @@
+---
+layout: default
+---
+
+<div class="post">
+    <span class="book-title">{{page.categories}}</span>
+    <h1 class="post-title">{{ page.title }}</h1>
+    <div class="post-line"></div>
+
+    <div class="post-tags">
+        {% for tag in page.tags %}
+        <span class="tag">{{tag}}</span>
+        {% endfor %}
+    </div>
+
+    {{ content }}
+
+    <div class="post-info">
+        <a class="catalogue-author" href="{{site.authors[page.author].url}}" target="_blank">
+            <span>Written by</span>
+            <img class="catalogue-author-profile" src="/{{site.authors[page.author].image}}" width="30px" height="30px"/>
+            <span>{{page.author}}</span>
+        </a>
+        <div>{{site.authors[page.author].bio}}</div>
+        {% if page.date %}
+        <br>
+        <span>on&nbsp;</span><time datetime="{{ page.date }}">{{ page.date | date: "%B %d, %Y" }}</time>
+        {% endif %}
+    </div>
+
+</div>
+
+<div class="pagination">
+    {% if page.next.url %}
+    <a href="{{ page.next.url | prepend: site.baseurl }}" class="left arrow">&#8592;</a>
+    {% endif %}
+    {% if page.previous.url %}
+    <a href="{{ page.previous.url | prepend: site.baseurl }}" class="right arrow">&#8594;</a>
+    {% endif %}
+
+    <a href="#" class="top">Top</a>
+</div>
+
+
+{% include discuss.html %}

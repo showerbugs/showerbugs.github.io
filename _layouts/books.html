@@ -1,0 +1,37 @@
+---
+layout: default
+---
+<div class="catalogue">
+    {% for post in site.books%}
+    <div class="catalogue-item">
+        <div class="catalogue-info">
+            <time class="catalogue-time" datetime="{{ post.date }}">{{ post.date | date: "%B %d, %Y" }}</time>
+            <a class="catalogue-author" href="{{site.authors[post.author].url}}" target="_blank">
+                <img class="catalogue-author-profile" src="/{{site.authors[post.author].image}}" width="30px" height="30px"/>
+                <span>{{post.author}}</span>
+            </a>
+        </div>
+        <a href="{{ post.url | prepend: site.baseurl }}" class="catalogue-link">
+            <h1 class="catalogue-title">{{ post.title }}</h1>
+            <div class="catalogue-line"></div>
+            <p>
+                {{ post.content | truncatewords: 30 | strip_html }}
+            </p>
+        </a>
+        <div class="catelogue-tag">
+            <span class="book-title">{{post.categories}}</span>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="pagination">
+    {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="left arrow">&#8592;</a>
+    {% endif %}
+    {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | prepend: site.baseurl }}" class="right arrow">&#8594;</a>
+    {% endif %}
+
+    <span>{{ paginator.page }}</span>
+</div>

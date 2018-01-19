@@ -11,6 +11,9 @@ url:            "https://showerbugs.github.io"
 sass:
   sass_dir:     _sass
   style:        :compressed
+collections:
+  books:
+    output: true
 
 # Build settings
 markdown:       kramdown
@@ -59,8 +62,8 @@ version:        3.4.1
 github:
   repo:         https://github.com/chesterhow/tale
 
-# Gems
-gems:
+# plugins
+plugins:
   - jekyll-paginate
 
 google_analytics: UA-99504405-1
