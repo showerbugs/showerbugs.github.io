@@ -3,7 +3,7 @@ permalink:      /:year-:month-:day/:title
 
 # Setup
 title:          Showerbugs
-paginate:       5
+paginate:       100
 baseurl:        ""
 url:            "https://showerbugs.github.io"
 
